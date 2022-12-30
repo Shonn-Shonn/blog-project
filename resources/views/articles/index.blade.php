@@ -22,6 +22,9 @@
                 <div class="card-body">
                     <h3 class="card-title">{{$article->title}}</h3>
                     <div>
+                        <small class="text-success">
+                            {{$article->user->name}},
+                        </small>
                         <small class="text-muted">
                             Comments: <b>{{count($article->comments)}}</b>
                             Category: <b>{{$article->category->name}}</b>

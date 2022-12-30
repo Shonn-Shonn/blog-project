@@ -32,9 +32,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <a class="text-success text-decoration-none" href="{{url('/articles/add')}}">+ Add Article</a>
-                    </ul>
+                    @auth
+                        <ul class="navbar-nav me-auto">
+                            <a class="text-success text-decoration-none" href="{{url('/articles/add')}}">+ Add Article</a>
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

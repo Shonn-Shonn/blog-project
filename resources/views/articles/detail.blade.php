@@ -20,6 +20,7 @@
                 <div class="card-body">
                     <h3 class="card-title">{{$article->title}}</h3>
                     <div>
+
                         <small class="text-muted">
                             Comments: <b>{{count($article->comments)}}</b>
                             Category: <b>{{$article->category->name}}</b>
@@ -28,9 +29,11 @@
                     </div>
                     <div>{{$article->body}}</div>
                     <div class="mt-2 btn-warning">
-                        <a class="btn btn-warning" href="{{url("/articles/delete/$article->id")}}">
-                            Delete
-                        </a>
+                        @auth
+                             <a class="btn btn-warning" href="{{url("/articles/delete/$article->id")}}">
+                                 Delete
+                             </a>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -41,19 +44,26 @@
                     Comments ({{count($article->comments)}})
                 </li>
                 @foreach ($article->comments as $comment)
-                     <li class="list-group-item">
-                        <a href="{{url("/comments/delete/$comment->id")}}" class="btn-close float-end"></a>
+                    <li class="list-group-item">
+                        @auth
+                             <a href="{{url("/comments/delete/$comment->id")}}" class="btn-close float-end"></a>
+                        @endauth
+                        <b class="text-success">
+                            {{$comment->user->name}}
+                       </b>-
                         {{$comment->content}}
                      </li>
                 @endforeach
             </ul>
 
-            <form class="mt-3" action="{{url('/comments/add')}}" method="post">
+           @auth
+               <form class="mt-3" action="{{url('/comments/add')}}" method="post">
                 @csrf
                 <input type="hidden" name="article_id" value="{{$article->id}}"/>
                 <textarea name="content" class="form-control mb-2"></textarea>
                 <button class="btn btn-secondary">Add Comment</button>
-            </form>
+                </form>
+           @endauth
 
 
    </div>

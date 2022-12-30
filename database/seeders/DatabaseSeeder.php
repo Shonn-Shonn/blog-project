@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Article::factory(20)->create();
         \App\Models\Comment::factory(20)->create();
 
-        // \App\Models\User::factory(10)->create();
 
         $catlist = ["General", "Technology", "Basic","Language","Programming"];
         foreach($catlist as $name){
@@ -24,6 +23,16 @@ class DatabaseSeeder extends Seeder
                 "name" => $name
             ]);
         }
+
+        \App\Models\User::factory()->create([
+            "name" => "Alice",
+            "email" => "alice@gmail.com"
+        ]);
+
+        \App\Models\User::factory()->create([
+            "name" => "Bob",
+            "email" => "bob@gmail.com"
+        ]);
 
     }
 }
