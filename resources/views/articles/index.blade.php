@@ -34,7 +34,10 @@
                     <div>{{$article->body}}</div>
                     <div class="mt-2">
                         <a href="{{url("/articles/detail/$article->id")}}" class="card-link">View Detail</a>
-                        <a href="{{url("/articles/edit/$article->id")}}" class="text-danger">Edit article</a>
+
+                        @can('update-article',$article)
+                            <a href="{{url("/articles/edit/$article->id")}}" class="text-danger">Edit article</a>
+                        @endcan
                     </div>
 
                 </div>

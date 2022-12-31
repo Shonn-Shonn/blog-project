@@ -14,14 +14,18 @@
             <label>Body</label>
             <textarea name="body" class="form-control" name="title">{{$article->body}}</textarea>
         </div>
-        <div class="mb-2">
-            <label>Category</label>
-            <select name="category_id" value="{{$article->category_id}}" class="form-select">
-                <option value="1">General</option>
-                <option value="2">Technology</option>
-                <option value="3">News</option>
+
+
+        <div class="form-group mb-3">
+            <select name="category" class="form-control  @error('category') is-invalid @enderror">
+               <option value="">Category</option>
+               @foreach($categories as $c)
+                    <option value="{{$c->id}}" @if($c->id == $article->category_id) selected @endif>{{$c->name}}</option>
+               @endforeach
             </select>
         </div>
+
+
         <button type="submit" class="btn btn-danger">Update</button>
     </form>
    </div>

@@ -22,13 +22,14 @@
             <label>Body</label>
             <textarea name="body" class="form-control" name="title"></textarea>
         </div>
-        <div class="mb-2">
-            <label>Category</label>
-            <select name="category_id" class="form-select">
-                <option value="1">General</option>
-                <option value="2">Technology</option>
-                <option value="3">News</option>
-            </select>
+
+        <div class="mb-3">
+            <select name="category" class="form-control  @error('category') is-invalid @enderror">
+                <option value="">Category</option>
+                @foreach($categories as $c)
+                     <option value="{{$c->id}}">{{$c->name}}</option>
+                @endforeach
+             </select>
         </div>
         <button type="submit" class="btn btn-danger">Save</button>
     </form>

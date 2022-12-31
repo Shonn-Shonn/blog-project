@@ -30,9 +30,13 @@
                     <div>{{$article->body}}</div>
                     <div class="mt-2 btn-warning">
                         @auth
-                             <a class="btn btn-warning" href="{{url("/articles/delete/$article->id")}}">
-                                 Delete
-                             </a>
+                            @can('delete-article',$article)
+                                <div class="mt-2">
+                                    <a class="btn btn-warning" href="{{url("/articles/delete/$article->id")}}">
+                                        Delete
+                                    </a>
+                                </div>
+                            @endcan
                         @endauth
                     </div>
                 </div>
@@ -46,7 +50,9 @@
                 @foreach ($article->comments as $comment)
                     <li class="list-group-item">
                         @auth
-                             <a href="{{url("/comments/delete/$comment->id")}}" class="btn-close float-end"></a>
+                             @can('delete-comment',$comment)
+                                <a href="{{url("/comments/delete/$comment->id")}}" class="btn-close float-end"></a>
+                             @endcan
                         @endauth
                         <b class="text-success">
                             {{$comment->user->name}}
