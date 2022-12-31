@@ -15,3 +15,43 @@ any platform
 Res data (Server to client)
 
 (Json | XML)
+
+/resource/action/id
+
+/resource/action/id/sub-resource
+
+/resource/action/id/sub-resource/add/id
+
+
+api development
+
+http method
+
+/resource/id
+/user/id
+
+
+GET
+POST
+PATCH/PUT
+DELETE
+
+PUT -> reset
+PATCH -> choose something
+
+php artisan make:controller
+
+
+curl -X GET localhost:8000/api/categories
+
+curl -X GET localhost:8000/api/categories > categories.txt
+
+curl -X POST localhost:8000/api/categories -d name=Curl
+
+on console
+
+fetch('http://localhost:8000/api/categories')
+.then(res => res.json())
+.then(json => {
+    console.log(json);
+})
