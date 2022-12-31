@@ -1,0 +1,17 @@
+Software -> user
+Service -> Service/Machine (computer system)
+not the same environment
+SOAP(PROTOCOL)
+http...(web technology)(web service)
+(api application program interface)
+(defination how to connect)
+URL(add/del/update)
+api(define url structure)
+
+add->input data
+
+any platform
+
+Res data (Server to client)
+
+(Json | XML)
