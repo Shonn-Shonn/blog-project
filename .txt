@@ -53,5 +53,5 @@ on console
 fetch('http://localhost:8000/api/categories')
 .then(res => res.json())
 .then(json => {
-    console.log(json);
+    console.log(json); 
 })
