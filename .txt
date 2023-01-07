@@ -53,5 +53,41 @@ on console
 fetch('http://localhost:8000/api/categories')
 .then(res => res.json())
 .then(json => {
-    console.log(json); 
+    console.log(json);
+
 })
+
+XHR2(Ajax)
+
+fetch()
+
+
+
+async function getCats(){
+    await fetch(``)
+}
+
+
+
+fetch() -> async process
+
+
+session cookie -> browser
+
+no need session cookie
+
+api -> token base authentication
+after installing ui package, sanctum is downloaded
+
+
+Soe Hin(HR)
+soehninthazin@acedatasystems.com
+
+09 794 389 057
+
+
+Si Thu Phyo(Project Team)
+
+sithuphyo@acedatasystems.com
+
+09 771 465 260

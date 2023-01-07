@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryApiController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,27 @@ use App\Http\Controllers\CategoryApiController;
 |
 */
 
-Route::apiResource('/categories',CategoryApiController::class);
+
+//Route::get('/categories',[CategoryController::class,'index']);
+//Route::post('/categories',[CategoryController::class,'store']);
+
+
+
+Route::apiResource('/categories',CategoryApiController::class)->middleware('auth:sanctum');
+
+Route::post('/login',function(){
+        $email = request()->email;
+        $password = request()->password;
+
+        $user = User::where("email",$email)->first();
+        if($user){
+           if(password_verify($password, $user->password)){
+                return $user->createToken('device')->plainTextToken;
+            }
+        }
+
+        return response(["message" => "Invalid email or password"]);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
